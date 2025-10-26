@@ -234,6 +234,7 @@ class NetworkCaller {
         'token': accessToken(),
       };
 
+
       _logRequest(url, body, headers);
       Response response = await delete(
         uri,

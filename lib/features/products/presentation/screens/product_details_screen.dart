@@ -1,5 +1,6 @@
 import 'package:ecommerce_project/app/app_colors.dart';
 import 'package:ecommerce_project/features/products/presentation/controllers/product_details_controller.dart';
+import 'package:ecommerce_project/features/wishlist/presentation/controllers/wish_list_controller.dart';
 import 'package:ecommerce_project/features/products/presentation/widgets/color_picker.dart';
 import 'package:ecommerce_project/features/products/presentation/widgets/product_image_slider.dart';
 import 'package:ecommerce_project/features/products/presentation/widgets/size_picker.dart';
@@ -24,12 +25,15 @@ class ProductDetailsScreen extends StatefulWidget {
 class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
   final ProductDetailsController _productDetailsController =
   ProductDetailsController();
+  final WishListController _wishListController =
+      WishListController();
 
   @override
   void initState() {
     super.initState();
     WidgetsBinding.instance.addPostFrameCallback((_) {
       _productDetailsController.getProductDetails(widget.productId);
+
     });
   }
 
@@ -107,11 +111,22 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                                               BorderRadius.circular(4),
                                             ),
                                             child: Padding(
-                                              padding: const EdgeInsets.all(2),
-                                              child: Icon(
-                                                Icons.favorite_outline,
-                                                size: 18,
-                                                color: Colors.white,
+                                              padding: EdgeInsets.all(2),
+                                              child: GestureDetector(
+                                                onTap: () async {
+                                                bool issusss = await _wishListController.addToWishList(widget.productId);
+                                                   if (issusss==true)
+                                                     {
+                                                       ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Wisth List is Address')));
+                                                     }
+                                                ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(_wishListController.errorMessage.toString())));
+
+                                                },
+                                                child: Icon(
+                                                    Icons.favorite_outline,
+                                                    size: 18,
+                                                    color: Colors.white,
+                                                  ),
                                               ),
                                             ),
                                           ),

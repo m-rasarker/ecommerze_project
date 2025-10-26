@@ -122,6 +122,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   const SizedBox(height: 8),
                   TextFormField(
                     controller: _passwordTEController,
+                    obscureText: true,
                     decoration: InputDecoration(hintText: 'Password'),
                     validator: (String? value) {
                       if (value == null || value.isEmpty ||  value.length<6) {

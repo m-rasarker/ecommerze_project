@@ -19,5 +19,9 @@ class Urls {
   static const String addToCartUrl = '$_baseUrl/cart';
   static const String cartListUrl = '$_baseUrl/cart';
 
+  static  String deletecartListUrl(String cart_item_id) => '$_baseUrl/cart/$cart_item_id';
+
+  static const String addWishListUrl = '$_baseUrl/wishlist';
+  static const String GetWishListUrl = '$_baseUrl/wishlist';
 
 }

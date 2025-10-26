@@ -43,6 +43,43 @@ class CartListController extends GetxController {
     return isSuccess;
   }
 
+
+
+
+
+  Future<bool> deleteCartbyItemId(String cartItemId,) async {
+    bool isSuccess = false;
+    _inProgress = true;
+    update();
+
+    // Map<String, String>  body = {
+    //   "product": cartItemId
+    //
+    // };
+
+    final NetworkResponse response = await Get.find<NetworkCaller>().deleteRequest(
+      url: Urls.deletecartListUrl(cartItemId),body: {'product': cartItemId}
+    );
+    if (response.isSuccess) {
+      deleteCart(cartItemId);
+      update();
+      _errorMessage = null;
+      isSuccess = true;
+    } else {
+      _errorMessage = response.errorMessage;
+    }
+
+
+    _inProgress = false;
+    update();
+
+    return isSuccess;
+  }
+
+
+
+
+
   int get totalPrice {
     int total = 0;
     for (CartItemModel item in _cartItemList) {
@@ -57,4 +94,13 @@ class CartListController extends GetxController {
         .quantity = quantity;
     update();
   }
+
+
+
+  void deleteCart(String cartItemId) {
+    _cartItemList.removeWhere((item) => item.id == cartItemId);
+    update();
+  }
+
+
 }

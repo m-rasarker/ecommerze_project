@@ -5,13 +5,14 @@ import 'package:get/get.dart';
 import '../../../../app/app_colors.dart';
 import '../../../../app/asset_paths.dart';
 import '../../../../app/constants.dart';
-import '../../../shared/presentation/widgets/inc_dec_button.dart';
-import '../../data/models/cart_item_model.dart';
+import '../../shared/presentation/widgets/inc_dec_button.dart';
+import '../presentation/data/models/wish_item_model.dart';
+
 
 class CartItem extends StatelessWidget {
-  const CartItem({super.key, required this.cartItemModel});
+  const CartItem({super.key, required this.wishItemModel});
 
-  final CartItemModel cartItemModel;
+  final WishItemModel wishItemModel;
 
   @override
   Widget build(BuildContext context) {
@@ -27,9 +28,9 @@ class CartItem extends StatelessWidget {
             margin: EdgeInsets.all(4),
             decoration: BoxDecoration(),
             child: Image.network(
-              cartItemModel.product.photos.isEmpty
+              wishItemModel.product.photos.isEmpty
                   ? ''
-                  : cartItemModel.product.photos.first,
+                  : wishItemModel.product.photos.first,
               height: 80,
               width: 80,
               errorBuilder: (_, __, ___) => Container(
@@ -52,11 +53,11 @@ class CartItem extends StatelessWidget {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(
-                              cartItemModel.product.title,
+                              wishItemModel.product.title,
                               style: TextTheme.of(context).titleSmall,
                             ),
                             Text(
-                              'Size: ${cartItemModel.size ?? 'Nil'}  Color: ${cartItemModel.color ?? 'Nil'}',
+                              'Size: ${wishItemModel.size ?? 'Nil'}  Color: ${wishItemModel.color ?? 'Nil'}',
                               style: TextTheme.of(context).bodySmall,
                             ),
                           ],
@@ -64,7 +65,7 @@ class CartItem extends StatelessWidget {
                       ),
                       IconButton(
                         onPressed: () {
-                          Get.find<CartListController>().deleteCartbyItemId(cartItemModel.id);
+                          Get.find<CartListController>().deleteCartbyItemId(wishItemModel.id);
                           Get.find<CartListController>().getCartList();
 
                         },
@@ -76,13 +77,13 @@ class CartItem extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text(
-                        '$takaSign${cartItemModel.product.currentPrice}',
+                        '$takaSign${wishItemModel.product.currentPrice}',
                         style: TextTheme.of(
                           context,
                         ).titleSmall?.copyWith(color: AppColors.themeColor),
                       ),
                       IncDecButton(onChange: (int value) {
-                        Get.find<CartListController>().updateCart(cartItemModel.id, value);
+                        Get.find<CartListController>().updateCart(wishItemModel.id, value);
                       }),
                     ],
                   ),

@@ -57,6 +57,7 @@ class _SignInScreenState extends State<SignInScreen> {
                 const SizedBox(height: 8),
                 TextFormField(
                   controller: _passwordTEController,
+                  obscureText: true,
                   decoration: InputDecoration(hintText: 'Password'),
                 ),
                 const SizedBox(height: 16),

@@ -51,51 +51,48 @@ class ProductCard extends StatelessWidget {
                   },
                 ),
               ),
-              Padding(
-                padding: const EdgeInsets.all(8),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  spacing: 4,
-                  children: [
-                    Text(
-                      productModel.title,
-                      maxLines: 1,
-                      style: TextStyle(overflow: TextOverflow.ellipsis),
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text(
-                          '$takaSign${productModel.currentPrice}',
-                          style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            color: AppColors.themeColor,
-                          ),
-                        ),
-                        Wrap(
-                          children: [
-                            Icon(Icons.star, size: 18, color: Colors.amber),
-                            Text(productModel.rating.toString()),
-                          ],
-                        ),
-                        Card(
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                spacing: 4,
+                children: [
+                  Text(
+                    productModel.title,
+                    maxLines: 1,
+                    style: TextStyle(overflow: TextOverflow.ellipsis),
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        '$takaSign${productModel.currentPrice}',
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
                           color: AppColors.themeColor,
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(4),
-                          ),
-                          child: Padding(
-                            padding: const EdgeInsets.all(2),
-                            child: Icon(
-                              Icons.favorite_outline,
-                              size: 14,
-                              color: Colors.white,
-                            ),
+                        ),
+                      ),
+                      Wrap(
+                        children: [
+                          Icon(Icons.star, size: 18, color: Colors.amber),
+                          Text(productModel.rating.toString()),
+                        ],
+                      ),
+                      Card(
+                        color: AppColors.themeColor,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(4),
+                        ),
+                        child: Padding(
+                          padding: const EdgeInsets.all(2),
+                          child: Icon(
+                            Icons.favorite_outline,
+                            size: 14,
+                            color: Colors.white,
                           ),
                         ),
-                      ],
-                    ),
-                  ],
-                ),
+                      ),
+                    ],
+                  ),
+                ],
               ),
             ],
           ),
