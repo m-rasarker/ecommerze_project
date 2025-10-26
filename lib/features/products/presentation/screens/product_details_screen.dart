@@ -1,5 +1,6 @@
 import 'package:ecommerce_project/app/app_colors.dart';
 import 'package:ecommerce_project/features/products/presentation/controllers/product_details_controller.dart';
+import 'package:ecommerce_project/features/products/presentation/screens/product_review_screen.dart';
 import 'package:ecommerce_project/features/wishlist/presentation/controllers/wish_list_controller.dart';
 import 'package:ecommerce_project/features/products/presentation/widgets/color_picker.dart';
 import 'package:ecommerce_project/features/products/presentation/widgets/product_image_slider.dart';
@@ -101,7 +102,11 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                                             ],
                                           ),
                                           TextButton(
-                                            onPressed: () {},
+                                            onPressed: () {
+                                              Navigator.pushNamed(context, ProductReviewScreen.name);
+
+
+                                            },
                                             child: Text('Reviews'),
                                           ),
                                           Card(

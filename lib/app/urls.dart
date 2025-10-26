@@ -13,10 +13,17 @@ class Urls {
   static String productList(int pageNo, int pageSize, String categoryId) =>
       '$_baseUrl/products?count=$pageSize&page=$pageNo&category=$categoryId';
 
+  static const String addToReviewUrl = '$_baseUrl/review';
+
+  static String productReviewList(String productId) =>
+      '$_baseUrl/reviews?product=$productId';
+
+
   static String productDetailsUrl(String productId) =>
       '$_baseUrl/products/id/$productId';
 
   static const String addToCartUrl = '$_baseUrl/cart';
+
   static const String cartListUrl = '$_baseUrl/cart';
 
   static  String deletecartListUrl(String cart_item_id) => '$_baseUrl/cart/$cart_item_id';

@@ -3,6 +3,7 @@ import 'package:ecommerce_project/features/auth/presentation/screens/sign_in_scr
 import 'package:ecommerce_project/features/auth/presentation/screens/sign_up_screen.dart';
 import 'package:ecommerce_project/features/auth/presentation/screens/splash_screen.dart';
 import 'package:ecommerce_project/features/auth/presentation/screens/verity_otp_screen.dart';
+import 'package:ecommerce_project/features/products/presentation/screens/product_review_screen.dart';
 import 'package:ecommerce_project/features/shared/presentation/screens/bottom_nav_holder_screen.dart';
 import 'package:flutter/material.dart';
 
@@ -19,6 +20,9 @@ MaterialPageRoute onGenerateRoute(RouteSettings settings) {
     screen = SignInScreen();
   } else if (settings.name == SignUpScreen.name) {
     screen = SignUpScreen();
+  } else if (settings.name == ProductReviewScreen.name) {
+    screen = ProductReviewScreen();
+
   } else if (settings.name == VerifyOtpScreen.name) {
     final String email = settings.arguments as String;
     screen = VerifyOtpScreen(email: email);
